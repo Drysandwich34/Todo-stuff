@@ -18,6 +18,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "PianoTasks"
+rootProject.name = "Tasked"
 
 include ':app'

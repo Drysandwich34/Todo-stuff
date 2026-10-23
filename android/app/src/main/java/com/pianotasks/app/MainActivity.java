@@ -574,7 +574,7 @@ public class MainActivity extends Activity {
             public void ok(Map<String, Object> result) {
                 ClipboardManager clipboard =
                         (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
-                clipboard.setPrimaryClip(ClipData.newPlainText("Piano Tasks export",
+                clipboard.setPrimaryClip(ClipData.newPlainText("Tasked export",
                         Json.str(result.get("json"))));
                 toast("Tasks copied to the clipboard");
             }

@@ -52,14 +52,24 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginBottom">4dp</item>
         <item name="android:textColor">@color/muted</item>
         <item name="android:textSize">12sp</item>
     </style>
 
+    <!-- A custom background replaces the platform one, and that also throws away
+         the padding it carried. Without the values below the text sits flush
+         against the border and the box looks too small for the font. -->
     <style name="FieldText">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">15sp</item>
+        <item name="android:minHeight">48dp</item>
+        <item name="android:paddingStart">12dp</item>
+        <item name="android:paddingEnd">12dp</item>
+        <item name="android:paddingTop">12dp</item>
+        <item name="android:paddingBottom">12dp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/fg</item>
     </style>
 </resources>

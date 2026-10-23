@@ -18,8 +18,8 @@ android {
         applicationId 'com.pianotasks.app'
         minSdk 26            // adaptive icons + modern TLS/JVM behaviour
         targetSdk 34
-        versionCode 1
-        versionName '1.0'
+        versionCode 3
+        versionName '1.2'
     }
 
     buildTypes {
