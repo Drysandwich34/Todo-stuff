@@ -1,0 +1,40 @@
+// Piano Tasks Android client.
+//
+// Deliberately dependency-free: framework widgets only (no AndroidX) and a
+// hand-rolled JSON reader, so the build needs nothing but the Android Gradle
+// Plugin. The networking layer (ApiClient/Json) imports nothing from
+// android.*, which is what lets tests/jvm_test.sh exercise it against a real
+// server on a plain JVM.
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.pianotasks.app'
+    compileSdk 34
+    buildToolsVersion '34.0.0'
+
+    defaultConfig {
+        applicationId 'com.pianotasks.app'
+        minSdk 26            // adaptive icons + modern TLS/JVM behaviour
+        targetSdk 34
+        versionCode 1
+        versionName '1.0'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    lint {
+        abortOnError false
+        checkReleaseBuilds false
+    }
+}

@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Piano Tasks</title>
+<meta name="theme-color" content="#0b0d13">
+<meta name="description" content="Self-hosted task list - daily recurring and long-term tasks, synced over Tailscale.">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/icon.svg">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Tasks">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<div id="toast" class="toast" hidden role="status"></div>
+
+<!-- ---------------------------------------------------------------- auth -->
+<main id="auth" class="auth" hidden>
+  <div class="auth-card">
+    <div class="brand"><span class="logo">◧</span><h1>Piano&nbsp;Tasks</h1></div>
+    <p class="muted" id="auth-sub">Sign in to sync your tasks across your devices.</p>
+
+    <div class="tabs" role="tablist">
+      <button class="tab is-active" type="button" data-auth-tab="login">Sign in</button>
+      <button class="tab" type="button" data-auth-tab="register">Create account</button>
+    </div>
+
+    <form id="login-form" class="form" autocomplete="on">
+      <label>Username
+        <input name="username" autocomplete="username" autocapitalize="none" autocorrect="off" spellcheck="false" required>
+      </label>
+      <label>Password
+        <input name="password" type="password" autocomplete="current-password" required>
+      </label>
+      <button class="primary" type="submit">Sign in</button>
+    </form>
+
+    <form id="register-form" class="form" autocomplete="on" hidden>
+      <label>Username
+        <input name="username" autocomplete="username" autocapitalize="none" autocorrect="off" spellcheck="false" placeholder="3-32 chars: a-z 0-9 . _ -" required>
+      </label>
+      <label>Display name <span class="muted small">(optional)</span>
+        <input name="display_name" autocomplete="name">
+      </label>
+      <label>Password
+        <input name="password" type="password" autocomplete="new-password" placeholder="at least 6 characters" required>
+      </label>
+      <button class="primary" type="submit">Create account</button>
+      <p class="muted small">The first account created becomes the admin.</p>
+    </form>
+
+    <p class="error" id="auth-error" hidden></p>
+    <p class="muted small foot-version" id="auth-foot"></p>
+  </div>
+</main>
+
+<!-- ----------------------------------------------------------------- app -->
+<div id="app" class="app" hidden>
+  <header class="topbar">
+    <div class="topbar-left">
+      <span class="logo small">◧</span>
+      <div class="topbar-title">
+        <h1 id="day-label">Tasks</h1>
+        <p class="muted small" id="day-sub"></p>
+      </div>
+    </div>
+    <div class="topbar-right">
+      <button class="icon-btn" id="prev-day" type="button" title="Previous day" aria-label="Previous day">‹</button>
+      <button class="icon-btn" id="next-day" type="button" title="Next day" aria-label="Next day">›</button>
+      <button class="icon-btn" id="today-btn" type="button" title="Jump to today" hidden>today</button>
+      <button class="icon-btn" id="refresh-btn" type="button" title="Refresh" aria-label="Refresh">⟳</button>
+      <button class="ghost" id="user-btn" type="button" title="Account"></button>
+    </div>
+  </header>
+
+  <section class="stats" id="stats"></section>
+
+  <section class="composer">
+    <form id="add-form">
+      <div class="composer-row">
+        <input id="new-title" placeholder="Add a task…" maxlength="500" required autocomplete="off">
+        <button class="primary" type="submit">Add</button>
+      </div>
+      <div class="composer-opts">
+        <div class="seg" role="group" aria-label="Task type">
+          <button type="button" class="seg-btn is-active" data-recurrence="daily">Daily</button>
+          <button type="button" class="seg-btn" data-recurrence="none">Long-term</button>
+        </div>
+        <label class="due" id="due-wrap" hidden>due
+          <input type="date" id="new-due">
+        </label>
+        <button type="button" class="ghost small-btn" id="notes-toggle">+ notes</button>
+      </div>
+      <textarea id="new-notes" placeholder="Notes (optional)" rows="2" hidden maxlength="20000"></textarea>
+    </form>
+  </section>
+
+  <section class="panel">
+    <div class="panel-head">
+      <h2>Daily</h2>
+      <span class="muted small" id="daily-count"></span>
+    </div>
+    <ul id="daily-list" class="list"></ul>
+    <p class="empty" id="daily-empty" hidden>No daily tasks yet — add one above and it comes back every day.</p>
+  </section>
+
+  <section class="panel">
+    <div class="panel-head">
+      <h2>Long-term</h2>
+      <span class="muted small" id="long-count"></span>
+      <label class="switch small"><input type="checkbox" id="show-done"> show done &amp; archived</label>
+    </div>
+    <ul id="long-list" class="list"></ul>
+    <p class="empty" id="long-empty" hidden>Nothing open here.</p>
+  </section>
+
+  <footer class="foot muted small">
+    <span id="foot-info">piano-tasks</span>
+    <span class="dot">·</span><a href="/api/export" id="export-link">export JSON</a>
+    <span class="dot">·</span><button class="linklike" id="logout-btn" type="button">sign out</button>
+  </footer>
+</div>
+
+<script src="/app.js"></script>
+</body>
+</html>

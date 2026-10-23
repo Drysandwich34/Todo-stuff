@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Same palette as the web client so the two look like one product. -->
+<resources>
+    <color name="bg">#FF0B0D13</color>
+    <color name="card">#FF141824</color>
+    <color name="card2">#FF1B2130</color>
+    <color name="fg">#FFE9EDF7</color>
+    <color name="muted">#FF8B95AB</color>
+    <color name="line">#FF242C3D</color>
+    <color name="accent">#FF7C8CFF</color>
+    <color name="accent_dim">#297C8CFF</color>
+    <color name="accent2">#FF34D3BD</color>
+    <color name="danger">#FFFF6B81</color>
+    <color name="warn">#FFFFB340</color>
+    <color name="icon_bg">#FF0B0D13</color>
+    <color name="strip_on">#FF34D3BD</color>
+    <color name="strip_off">#FF242C3D</color>
+</resources>

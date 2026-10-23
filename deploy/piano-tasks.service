@@ -1,0 +1,22 @@
+[Unit]
+Description=Piano Tasks - self-hosted task server (long-term + daily tasks)
+Documentation=file:/home/family/.local/share/piano-tasks/README.md
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/family/.local/share/piano-tasks
+ExecStart=/usr/bin/python3 /home/family/.local/share/piano-tasks/server.py
+Environment=PIANO_TASKS_HOST=0.0.0.0
+Environment=PIANO_TASKS_PORT=8080
+Environment=PIANO_TASKS_DB=/home/family/.local/share/piano-tasks/data/tasks.db
+Environment=PYTHONUNBUFFERED=1
+Restart=always
+RestartSec=3
+# the server only ever needs its own directory
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=default.target

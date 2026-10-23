@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  The task server is reached over Tailscale, which encrypts the link end to
+  end, but it serves plain http:// on a tailnet address. Android blocks
+  cleartext by default, so permit it here. Anything outside the tailnet is
+  still refused, and the app never talks to the public internet.
+-->
+<network-security-config>
+    <base-config cleartextTrafficPermitted="true">
+        <trust-anchors>
+            <certificates src="system" />
+        </trust-anchors>
+    </base-config>
+</network-security-config>

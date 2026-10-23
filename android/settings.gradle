@@ -1,0 +1,23 @@
+// pluginManagement must come first — Gradle rejects it after any other statement.
+pluginManagement {
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+
+// Where ordinary dependencies come from. pluginManagement above only covers
+// plugins; without this block the resource-linking step fails with
+// "Cannot resolve external dependency com.android.tools.build:aapt2 ...
+// because no repositories are defined".
+dependencyResolutionManagement {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+rootProject.name = "PianoTasks"
+
+include ':app'

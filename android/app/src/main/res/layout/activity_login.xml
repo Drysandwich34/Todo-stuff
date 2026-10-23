@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:textColor="@color/fg"
+            android:textSize="26sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="18dp"
+            android:text="@string/sign_in_subtitle"
+            android:textColor="@color/muted"
+            android:textSize="14sp" />
+
+        <TextView style="@style/FieldLabel" android:text="@string/server_url" />
+        <EditText
+            android:id="@+id/server_url"
+            style="@style/FieldText"
+            android:background="@drawable/field_bg"
+            android:hint="@string/server_url_hint"
+            android:inputType="textUri"
+            android:maxLines="1" />
+
+        <TextView style="@style/FieldLabel" android:text="@string/username" />
+        <EditText
+            android:id="@+id/username"
+            style="@style/FieldText"
+            android:background="@drawable/field_bg"
+            android:inputType="text"
+            android:maxLines="1" />
+
+        <TextView style="@style/FieldLabel" android:text="@string/password" />
+        <EditText
+            android:id="@+id/password"
+            style="@style/FieldText"
+            android:background="@drawable/field_bg"
+            android:inputType="textPassword"
+            android:maxLines="1" />
+
+        <Button
+            android:id="@+id/sign_in"
+            style="@style/PrimaryBtn"
+            android:layout_marginTop="18dp"
+            android:layout_width="match_parent"
+            android:text="@string/sign_in" />
+
+        <Button
+            android:id="@+id/register"
+            style="@style/ToolBtn"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:text="@string/create_account" />
+
+        <TextView
+            android:id="@+id/status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:textColor="@color/muted"
+            android:textSize="13sp" />
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,5 @@
+// Root build file. The Android Gradle Plugin is the only build dependency;
+// the app itself has no third-party libraries at all.
+plugins {
+    id 'com.android.application' version '8.5.2' apply false
+}

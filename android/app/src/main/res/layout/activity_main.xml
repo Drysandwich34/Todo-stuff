@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="14dp">
+
+    <!-- top bar -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/day_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/fg"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/user_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/muted"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/refresh"
+            style="@style/ToolBtn"
+            android:text="@string/refresh_glyph" />
+
+        <Button
+            android:id="@+id/menu"
+            style="@style/ToolBtn"
+            android:text="@string/menu_glyph" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/stats"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:textColor="@color/muted"
+        android:textSize="13sp" />
+
+    <!-- add a task -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <EditText
+            android:id="@+id/new_title"
+            style="@style/FieldText"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/field_bg"
+            android:hint="@string/add_task_hint"
+            android:inputType="text"
+            android:maxLines="1" />
+
+        <Button
+            android:id="@+id/add_btn"
+            style="@style/PrimaryBtn"
+            android:layout_marginStart="8dp"
+            android:text="@string/add" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <Button
+            android:id="@+id/kind_daily"
+            style="@style/ToolBtn"
+            android:text="@string/daily" />
+
+        <Button
+            android:id="@+id/kind_longterm"
+            style="@style/ToolBtn"
+            android:layout_marginStart="6dp"
+            android:text="@string/longterm" />
+
+        <Button
+            android:id="@+id/due_btn"
+            style="@style/ToolBtn"
+            android:layout_marginStart="6dp"
+            android:visibility="gone"
+            android:text="@string/set_due" />
+
+        <Button
+            android:id="@+id/notes_btn"
+            style="@style/ToolBtn"
+            android:layout_marginStart="6dp"
+            android:text="@string/notes" />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/new_notes"
+        style="@style/FieldText"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/field_bg"
+        android:gravity="top"
+        android:hint="@string/notes"
+        android:inputType="textMultiLine"
+        android:minLines="2"
+        android:visibility="gone" />
+
+    <!-- the lists -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="6dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView style="@style/SectionHeader" android:text="@string/section_daily" />
+
+            <LinearLayout
+                android:id="@+id/daily_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+
+            <TextView
+                android:id="@+id/daily_empty"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/empty_daily"
+                android:textColor="@color/muted"
+                android:textSize="13sp"
+                android:visibility="gone" />
+
+            <TextView style="@style/SectionHeader" android:text="@string/section_longterm" />
+
+            <LinearLayout
+                android:id="@+id/long_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+
+            <TextView
+                android:id="@+id/long_empty"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/empty_long"
+                android:textColor="@color/muted"
+                android:textSize="13sp"
+                android:visibility="gone" />
+        </LinearLayout>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/muted"
+        android:textSize="13sp" />
+</LinearLayout>
